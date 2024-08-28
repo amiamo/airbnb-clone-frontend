@@ -9,7 +9,23 @@ import {
 } from "@chakra-ui/react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 
-export default function Room() {
+interface IRoomProps {
+  imageUrl: string;
+  name: string;
+  rating: string;
+  city: string;
+  country: string;
+  price: number;
+}
+
+export default function Room({
+  imageUrl,
+  name,
+  rating,
+  city,
+  country,
+  price,
+}: IRoomProps) {
   const gray = useColorModeValue("gray.600", "gray.300");
   return (
     <VStack
@@ -21,8 +37,9 @@ export default function Room() {
         overflow={"hidden"}
         rounded={"2xl"}>
         <Image
-          minH={"280px"}
-          src='https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NjgyNDc0NzIxNDE2NTI5NTIy/original/c329a04a-51b7-477d-9fc7-7aa4a3a998e7.jpeg?im_w=720'
+          h={"280px"}
+          w={"440px"}
+          src={imageUrl}
         />
         <Box
           cursor={"pointer"}
@@ -41,25 +58,25 @@ export default function Room() {
             as={"b"}
             noOfLines={1}
             fontSize='md'>
-            OMG Winner, Coconest Langkawi
+            {name}
           </Text>
           <HStack
             _hover={{ color: "red.400" }}
             spacing={1}>
             <FaStar size={14} />
-            <Text>5.0</Text>
+            <Text>{rating}</Text>
           </HStack>
         </Grid>
         <Text
           fontSize={"sm"}
           color={gray}>
-          말레이시아 LAngkawi
+          {city},{country}
         </Text>
       </Box>
       <Text
         fontSize={"small"}
         color={gray}>
-        <Text as={"b"}>$180</Text>/ night
+        <Text as={"b"}>{price}</Text>/ night
       </Text>
     </VStack>
   );
