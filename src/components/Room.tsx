@@ -46,7 +46,7 @@ export default function Room({
           position={"absolute"}
           top={5}
           right={5}
-          color={"gray.600"}>
+          color={"white"}>
           <FaRegHeart size={20} />
         </Box>
       </Box>
